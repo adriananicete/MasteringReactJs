@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-function SignupForm() {
+function Login() {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [isMatchPass, setIsMatchPass] = useState(null);
@@ -33,56 +33,29 @@ function SignupForm() {
   };
   return (
     <div className="border w-80 h-auto p-5 flex flex-col justify-center items-center gap-5 border-gray-400 shadow-md rounded-[8px]">
-      <h1 className=" text-xl">Sign Up</h1>
+      <h1 className=" text-xl">Login</h1>
 
       <form action="" onSubmit={handleSubmit(onSubmit)} className="bg-[]">
+
         <div className="bg-[] p-1 flex justify-between items-center">
           <label className="text-gray-600" htmlFor="">
-            Full Name:{" "}
+            Name:{" "}
           </label>
           <input
             className="border border-gray-500 outline-none focus:ring-2 focus:ring-blue-500 rounded-[3px]"
             type="text"
             name=""
             id=""
-            {...register("text", { required: "Name is required" })}
+            {...register("text", {
+              required: "Name is required",
+            })}
           />
         </div>
         {errors.text && (
           <p className="text-xs text-red-500">{errors.text.message}</p>
         )}
 
-        <div className="bg-[] p-1 flex justify-between items-center">
-          <label className="text-gray-600" htmlFor="">
-            Email:{" "}
-          </label>
-          <input
-            className="border border-gray-500 outline-none focus:ring-2 focus:ring-blue-500 rounded-[3px]"
-            type="email"
-            name=""
-            id=""
-            {...register("email", {
-              required: "Email is required",
-            })}
-          />
-        </div>
-        {errors.email && (
-          <p className="text-xs text-red-500">{errors.email.message}</p>
-        )}
-
-        <div className="bg-[] p-1 flex justify-between items-center">
-          <label className="text-gray-600" htmlFor="">
-            Age:{" "}
-          </label>
-          <input
-            className="border border-gray-500 outline-none focus:ring-2 focus:ring-blue-500 rounded-[3px]"
-            type="number"
-            name=""
-            id=""
-            {...register("age", {required: 'Age is required'})}
-          />
-        </div>
-        {errors.age && (<p className="text-xs text-red-500">{errors.age.message}</p>)}
+        
 
         <div className="bg-[] p-1 flex justify-between items-center">
           <label className="text-gray-600" htmlFor="">
@@ -113,26 +86,6 @@ function SignupForm() {
           <p className="text-xs text-red-500">{errors.password.message}</p>
         )}
 
-        <div className="bg-[] p-1 flex justify-between items-center">
-          <label className="text-gray-600" htmlFor="">
-            Confirm Password:{" "}
-          </label>
-          <input
-            className="border border-gray-500 outline-none focus:ring-2 focus:ring-blue-500 rounded-[3px]"
-            type="password"
-            onChange={(e) => {
-              handleConfirmPass(e);
-            }}
-            name=""
-            id=""
-          />
-        </div>
-        {isMatchPass === null ? null : isMatchPass ? (
-          <p className="text-xs text-green-500">Password Matched</p>
-        ) : (
-          <p className="text-xs text-red-500">Password not match</p>
-        )}
-
         <button
           type="submit"
           className="bg-blue-500 text-white w-full rounded-[3px] mt-5"
@@ -144,4 +97,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default Login;
