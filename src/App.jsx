@@ -10,11 +10,24 @@ import Tab1 from "./components/Tab1";
 import Tab2 from "./components/Tab2";
 import Tab3 from "./components/Tab3";
 import Login from "./components/Login";
+import { AuthContext } from "./AuthContext";
+import { useState } from "react";
 
 function App() {
+
+  const [user, setUser] = useState({name: "", isAuth: false});
+
+  function login(name) {
+    setUser({name: name, isAuth: true})
+  }
+
+  function logout() {
+    setUser({name: "", isAuth: false})
+  }
   return ( 
     <div className="bg-[] h-dvh flex justify-center items-center">
-      <Routes>
+  <AuthContext.Provider value={{user, login, logout}}>
+        <Routes>
         <Route element={<Layout/>}>
           <Route path="/" element={<HomePage />}>
           <Route index element={<Tab1 />} />
@@ -29,6 +42,7 @@ function App() {
 
         
       </Routes>
+      </AuthContext.Provider>
     </div>
    );
 }
