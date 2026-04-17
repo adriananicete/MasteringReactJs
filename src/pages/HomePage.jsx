@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { Link, Outlet } from "react-router";
+import { AuthContext } from "../AuthContext";
 
 function HomePage() {
+   const { user } = useContext(AuthContext)
     return ( 
         <div className="w-full h-full flex flex-col justify-center items-center">
             <h1 className="font-bold text-[45px]">Home Page</h1>
-            <p>You are not logged in. Go to login page to sign in</p>
+            {user.isAuth ? <p>Hello, {user.name}</p> : <p>You are not logged in. Go to login page to sign in</p>}
 
             <div className="border w-100 h-100 rounded-[5px] border border-gray-400">
                  <div className="w-full h-auto border-b border-gray-300 flex gap-5">
