@@ -16,7 +16,7 @@ function HomePage() {
                  <Link to={'/tab3'}>Tab 3</Link>
                  </div>
 
-                 <div>
+                 <div className="w-full h-full">
                     <Outlet />
                  </div>
             </div>
